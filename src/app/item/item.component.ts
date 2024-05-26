@@ -15,6 +15,7 @@ export class ItemComponent implements OnInit {
     this.getItems();
   }
 
+  /**? get all items of the list */
   getItems():void {
     this.itemService.getItems().subscribe(items=> this.items = items)
   }
