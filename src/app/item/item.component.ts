@@ -20,4 +20,14 @@ export class ItemComponent implements OnInit {
     this.itemService.getItems().subscribe(items=> this.items = items)
   }
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.itemService.addItem({ name } as unknown as Item)
+      .subscribe(item => {
+        this.items.push(item);
+      });
+  }
+  
+
 }

@@ -10,3 +10,8 @@
       <button>Delete</button>
     </li>
 </ul>
+
+
+<input #itemName />
+
+<button (click)="add(itemName.value); itemName.value=''">Add</button>

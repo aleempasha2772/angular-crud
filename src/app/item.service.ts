@@ -27,6 +27,21 @@ export class ItemService {
     )
   }
 
+  getItem(id:number):Observable<Item>{
+    const url = `${this.itemsUrl}/${id}`;
+    return this.http.get<Item>(url).pipe(
+      catchError(this.handleError<Item>(`getItem id=${id}`))
+    )
+  }
+
+  addItem(item: Item): Observable<Item> {
+    return this.http.post<Item>(this.itemsUrl, item).pipe(
+      catchError(this.handleError<Item>('addItem'))
+    );
+  }
+
+  
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
