@@ -40,7 +40,14 @@ export class ItemService {
     );
   }
 
-  
+
+  updateItem(item: Item): Observable<any> {
+    return this.http.put(this.itemsUrl, item).pipe(
+      catchError(this.handleError<any>('updateItem'))
+    );
+  }
+
+
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
