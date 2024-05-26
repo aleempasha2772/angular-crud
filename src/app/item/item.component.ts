@@ -29,5 +29,9 @@ export class ItemComponent implements OnInit {
       });
   }
   
+  delete(item:Item):void{
+    this.items = this.items.filter(h=>h!==item);
+    this.itemService.deleteItem(item.id).subscribe();
+  }
 
 }

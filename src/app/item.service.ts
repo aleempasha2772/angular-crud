@@ -47,6 +47,12 @@ export class ItemService {
     );
   }
 
+  deleteItem(id:number): Observable<Item>{
+    const url = `${this.itemsUrl}/${id}`;
+    return this.http.delete<Item>(url).pipe(
+      catchError(this.handleError<Item>('updateItem'))
+    )
+  }
 
 
   private handleError<T>(operation = 'operation', result?: T) {
